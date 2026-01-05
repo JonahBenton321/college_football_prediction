@@ -1,5 +1,5 @@
 ## Project overview
-The goal of this project is to use historical data from competing football team’s previous five games to predict the winner of a match up. This project employs an end-to-end data collection and refinement pipeline to scrape data from the NAIA's official website and train a model to predict match-up outcomes. This project was developed as a portfolio piece to demonstrate data collection, processing, feature engineering, and modeling skills
+The goal of this project is to use historical data from competing football teams' previous five games to predict the winner of a match up. This project employs an end-to-end data collection and refinement pipeline to scrape data from the NAIA's official website and train a model to predict match-up outcomes. This project was developed as a portfolio piece to demonstrate data collection, processing, feature engineering, and modeling skills.
 
 ## Project Structure
     +---Data
@@ -49,17 +49,17 @@ The project uses custom python scripts to ensure all scraped data is standardize
 
 Key processing steps:
 + Grouping data by team
-+ Computing an exponentially weighted rolling average over the previous five games for evey index
++ Computing an exponentially weighted rolling average over the previous five games for every index
 + Shifting rolling averages by one game to prevent target leakage
 + Dropping rows with null values introduced by rolling windows
 
 **Feature Engineering**\
 To simplify modeling, relative features are created:
 
-+ For each match-up, team-one features are subtracted from team-two features
++ For each match-up, team-two features are subtracted from team-one features
 + Each game is represented as a single row in a panda’s DataFrame
 + The target variable is binary:
-  + 1 if team two wins
+  + 1 if team two won
   + 0 otherwise
 
 The final dataset contains:
@@ -91,7 +91,7 @@ Model successfully superseded a naïve baseline predictor
 Clone the repository:
 
     git clone https://github.com/JonahBenton321/college_football_prediction.git
-    cd college-football-predictor
+    cd college_football_predictor
 Install dependencies:
 
 	pip install -r requirements.txt
@@ -111,7 +111,7 @@ Run data modeling script:
 + Python
 + Pandas
 + NumPy
-+ scikit-learn
++ Scikit-learn
 + Playwright
 + Joblib
 
