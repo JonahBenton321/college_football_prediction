@@ -1,5 +1,6 @@
 import pandas as pd
 from rolling_average import rolling_average
+import os
 
 # Reads data from the years 2021-25 into a single data frame called df
 df =  pd.read_csv('Data/raw/games_data_2021_26.csv')
