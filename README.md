@@ -91,19 +91,20 @@ Model successfully superseded a naïve baseline predictor
 Clone the repository:
 
     git clone https://github.com/JonahBenton321/college_football_prediction.git
-    cd college_football_predictor
+    cd college_football_predicton
 Install dependencies:
 
 	pip install -r requirements.txt
-Run data scraping scripts:
+Run data scraping scripts:\
+Only do this if you wish to see scraping completed, scraping can take a few hours\
+This project comes with prepossed data for model traing scraping is not required
 
     python src/scraping/scrape_schedule.py
-(optional)
 
     python src/scraping/scrape_games.py
 Run data processing script:
 
-	python src/preprocessing/create_rolling_relative_features.py
+	python src/processing/create_rolling_relative_features.py
 Run data modeling script:
 
     python src/modeling/train_model.py
