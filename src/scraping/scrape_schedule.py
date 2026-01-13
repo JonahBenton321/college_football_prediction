@@ -1,5 +1,6 @@
 from playwright.sync_api import sync_playwright
 import numpy as np
+import os
 
 # The purpose this script is to go to the schedule page for naiastats and scrape every link to every box score for a given year
 
