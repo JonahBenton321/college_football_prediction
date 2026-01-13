@@ -6,11 +6,16 @@ import numpy as np
 # years the scraper will cover
 years = ['2021-22', '2022-23', '2023-24', '2024-25', '2025-26']
 
+# Create directory structure if it doesn't exist
+output_dir = '../../Data/links'
+os.makedirs(output_dir, exist_ok=True)
+
 # Variable which will hold the scraped links
 data = []
 
 with sync_playwright() as p:
     for year in years:
+        print(f'scraping year: {year}')
         # url which host boxscore links
         url = f"https://naiastats.prestosports.com/sports/fball/{year}/schedule"
         try:
@@ -43,4 +48,5 @@ with sync_playwright() as p:
 
 # Converts data to numpy and saves to a file
 links_numpy = np.array(data)
-np.save('../../Data/links/links_to_games.npy', links_numpy)
+np.save(os.path.join(output_dir, "links_to_games.npy"), links_numpy)
+print(f"Saved {len(data)} links to {output_dir}/links_to_games.npy")
