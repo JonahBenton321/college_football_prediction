@@ -3,9 +3,15 @@ from playwright.async_api import async_playwright
 import numpy as np
 import pandas as pd
 import re
+import os
 
 # Loads link to collage football games to be scraped
-links = np.load('../../Data/links/links_to_games.npy')
+links = np.load('Data/links/links_to_games.npy')
+
+output_dir = "Data/raw"
+
+# Create directory structure if it doesn't exist
+os.makedirs(output_dir, exist_ok=True)
 
 total_len = len(links)
 # Columns often contain data the form '7--8', '7-8', '7 -8' among other variations
@@ -146,11 +152,14 @@ async def scrape_urls():
 
                 print(f'scraping url {url} failed {e}')
 
+            if current_index == 10:
+                break
+
             # close context and browser
             await context.close()
             await browser.close()
         # Saves to CSV
-        df_master.to_csv('../../Data/raw/games_data_2021_26')
+        df_master.to_csv(os.path.join(output_dir, 'games_data_2021_26'))
 
 
 # Runs async scraper
