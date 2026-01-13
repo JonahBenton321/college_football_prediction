@@ -79,7 +79,7 @@ async def scrape_urls():
                 all_td = await page.query_selector_all('td')
 
                 # Converts html data to pandas data frames
-                list_of_df = pd.read_html(html)
+                list_of_df = pd.read_html(html, parser='html5lib')
 
                 # The index of 3 and 0 store the tables which contain relevant data
                 df_major_features = list_of_df[3]
@@ -159,7 +159,7 @@ async def scrape_urls():
             await context.close()
             await browser.close()
         # Saves to CSV
-        df_master.to_csv(os.path.join(output_dir, 'games_data_2021_26'))
+        df_master.to_csv(os.path.join(output_dir, 'games_data_2021_26.csv'), index=False)
 
 
 # Runs async scraper
