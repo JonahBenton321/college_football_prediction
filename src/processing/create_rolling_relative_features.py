@@ -2,8 +2,12 @@ import pandas as pd
 from rolling_average import rolling_average
 
 # Reads data from the years 2021-25 into a single data frame called df
-df =  pd.read_csv('../../Data/raw/games_data_2021_26.csv')
+df =  pd.read_csv('Data/raw/games_data_2021_26.csv')
 
+output_dir = "Data"
+
+# Create directory structure if it doesn't exist
+os.makedirs(output_dir, exist_ok=True)
 # The NAIA Average statistic is often empty on the NAIA Stats website
 # This code replaces the nan values with the mean of the average column
 df = df.fillna(df['Average'].mean())
@@ -78,7 +82,7 @@ for col in relative_features:
 relative_features = relative_features.dropna()
 
 # Saves data frames to csv
-relative_features.to_csv('../../Data/processed_game_data_2021-26.csv', index=False)
+relative_features.to_csv(os.path.join(output_dir, 'processed_game_data_2021-26.csv'), index=False)
 
 
 
