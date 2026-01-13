@@ -79,7 +79,7 @@ async def scrape_urls():
                 all_td = await page.query_selector_all('td')
 
                 # Converts html data to pandas data frames
-                list_of_df = pd.read_html(html, parser='html5lib')
+                list_of_df = pd.read_html(html)
 
                 # The index of 3 and 0 store the tables which contain relevant data
                 df_major_features = list_of_df[3]
