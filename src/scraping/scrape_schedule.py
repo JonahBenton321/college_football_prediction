@@ -8,7 +8,7 @@ import os
 years = ['2021-22', '2022-23', '2023-24', '2024-25', '2025-26']
 
 # Create directory structure if it doesn't exist
-output_dir = '../../Data/links'
+output_dir = 'Data/links'
 os.makedirs(output_dir, exist_ok=True)
 
 # Variable which will hold the scraped links
