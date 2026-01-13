@@ -1,5 +1,4 @@
-import os.path
-
+import os
 import joblib
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
@@ -7,8 +6,13 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import TimeSeriesSplit
 
+output_dir = 'models'
+
+# Create directory structure if it doesn't exist
+os.makedirs(output_dir, exist_ok=True)
+
 # Loads X and y data
-data = pd.read_csv('../../Data/processed/processed_game_data_2021-26.csv')
+data = pd.read_csv('Data/processed/processed_game_data_2021-26.csv')
 y = data['Target Data'].copy()
 X = data.drop(columns=['Target Data'], axis=1).copy()
 
@@ -43,6 +47,4 @@ print(f'Training Score {score_train:.2f}')
 print(f'baseline {y[y==1].sum()/len(y):.2f}')
 
 # Saves the model
-
-joblib.dump(model, '../../models/final_model.joblib')
-
+joblib.dump(model, os.path.join(output_dir, 'final_model.joblib'))
