@@ -88,7 +88,7 @@ async def scrape_urls():
                 # Pulls the date feature
                 df_score_name_date['Date'] = re.search(r"(\d{1,2}/\d{1,2}/\d{2,4})", df_score_name_date[0].iloc[0]).group(1)
 
-                # The name and score feature are store left to right in single row
+                # The name and score feature are stored left to right in single row
                 # This code converts the row which stores the name and date to a vertical column and adds the data to the column 'Name/Score'
                 df_score_name_date['Name/Score'] = df_score_name_date.iloc[1, :-1].T
 
