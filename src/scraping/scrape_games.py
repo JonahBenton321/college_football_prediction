@@ -114,7 +114,7 @@ async def scrape_urls():
 
                 # Drops data unnecessary for model training
                 # The dropped data consists of sub statistics which breaks data like 'Total Offensive Plays' into multiple subcategories
-                # These subcategories are unnecessary for module training and dropped here as result
+                # These subcategories are unnecessary for module training and dropped here as a result
                 df_major_features = df_major_features.drop(['Punt Returns: Number-Yards  Kickoff Returns:  Number-Yards Interception Returns: Number-Yards'])
                 df_major_features = df_major_features.drop(['Passing Rushing Penalty'])
                 df_major_features = df_major_features.drop(['Total Offensive Plays Average gain per play'])
