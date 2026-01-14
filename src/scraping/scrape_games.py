@@ -152,9 +152,6 @@ async def scrape_urls():
 
                 print(f'scraping url {url} failed {e}')
 
-            if current_index == 10:
-                break
-
             # close context and browser
             await context.close()
             await browser.close()
